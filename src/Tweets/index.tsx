@@ -1,6 +1,7 @@
 import React from "react";
 import { Tweet } from "../App/types";
 import { hashTagRegex } from "../utils/regexes";
+import { differenceInDays, isSameDay } from "date-fns";
 import "./style.css";
 
 export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
@@ -64,10 +65,6 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
   const getMostTweetsInOneDay = React.useCallback((tweets: Tweet[]) => {
     if (!tweets.length) return 0;
 
-    const sameDay = (d1: Date, d2: Date) => {
-      return d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
-    };
-
     let maxTweetsPerDay = 0;
 
     for (let i = 0; i < tweets.length; i++) {
@@ -81,7 +78,7 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
         const createdAtIso2 = tweets[j].createdAt;
         const dateTwo = new Date(createdAtIso2);
 
-        if (sameDay(dateOne, dateTwo)) {
+        if (isSameDay(dateOne, dateTwo)) {
           if (firstTime) {
             numberOfTweetsForDay = 2;
             firstTime = false;
@@ -133,15 +130,6 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
   const getMostDaysBetweenTweets = React.useCallback((tweets: Tweet[]) => {
     if (tweets.length < 2) return 0;
 
-    const daysDiff = (d1: Date, d2: Date) => {
-      const milliscondsPerDay = 1000 * 60 * 60 * 24;
-
-      const utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate());
-      const utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate());
-
-      return Math.floor((utc2 - utc1) / milliscondsPerDay);
-    };
-
     let maxMostDays = 0;
 
     const tweetsSorted = tweets.sort((t1, t2) => {
@@ -159,7 +147,7 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
       const createdAtIso2 = tweetTwo.createdAt;
       const dateTwo = new Date(createdAtIso2);
 
-      const diffBetweetTweets = daysDiff(dateOne, dateTwo);
+      const diffBetweetTweets = differenceInDays(dateTwo, dateOne);
 
       if (diffBetweetTweets > maxMostDays) {
         maxMostDays = diffBetweetTweets;
