@@ -171,13 +171,6 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
       const mostDaysBetweenTweets = getMostDaysBetweenTweets(tweets);
       setMostDays(() => mostDaysBetweenTweets);
     }
-
-    return () => {
-      setHashTag(() => "N/A");
-      setMostTweets(() => 0);
-      setLongetTweet(() => "N/A");
-      setMostDays(() => 0);
-    };
   }, [
     tweets,
     getMostPopularHashTag,
