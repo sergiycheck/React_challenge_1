@@ -29,7 +29,7 @@ function App() {
       createdAt: `${item.createdAt}Z`,
     }));
 
-    const validatedTweets = tweetsArrSchema.safeParse(data);
+    const validatedTweets = await tweetsArrSchema.safeParseAsync(data);
 
     if (validatedTweets.success) {
       const tweetsLookUp = {};

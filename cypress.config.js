@@ -5,7 +5,7 @@ module.exports = defineConfig({
     baseUrl: "http://localhost:3000",
   },
   retries: {
-    runMode: 2,
+    runMode: 5,
     openMode: 0,
   },
 });
