@@ -24,11 +24,6 @@ function App() {
       `${tweetsEndpointURL}?${params.toString()}`
     );
 
-    data = data?.map((item) => ({
-      ...item,
-      createdAt: `${item.createdAt}Z`,
-    }));
-
     const validatedTweets = await tweetsArrSchema.safeParseAsync(data);
 
     if (validatedTweets.success) {

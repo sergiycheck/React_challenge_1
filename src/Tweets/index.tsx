@@ -58,7 +58,8 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
   }, []);
 
   /**
-   * Retrieves the highest number of tweets that were created on any given day by the given user.
+   * Retrieves the highest number of tweets that
+   * were created on any given day by the given user.
    * A day's time period here is defined from 00:00:00 to 23:59:59
    * If there are no tweets for the given user, this method should return 0.
    */
@@ -71,18 +72,13 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
       const createAtIso1 = tweets[i].createdAt;
       const dateOne = new Date(createAtIso1);
 
-      let numberOfTweetsForDay = 0;
-      let firstTime = true;
+      let numberOfTweetsForDay = 1;
 
       for (let j = i + 1; j < tweets.length; j++) {
         const createdAtIso2 = tweets[j].createdAt;
         const dateTwo = new Date(createdAtIso2);
 
         if (isSameDay(dateOne, dateTwo)) {
-          if (firstTime) {
-            numberOfTweetsForDay = 2;
-            firstTime = false;
-          }
           numberOfTweetsForDay += 1;
         }
       }
@@ -90,9 +86,6 @@ export default function Tweets({ tweets }: { tweets?: Tweet[] }) {
       if (numberOfTweetsForDay > maxTweetsPerDay) {
         maxTweetsPerDay = numberOfTweetsForDay;
       }
-
-      numberOfTweetsForDay = 0;
-      firstTime = true;
     }
 
     return maxTweetsPerDay;

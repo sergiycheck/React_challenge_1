@@ -2,7 +2,7 @@ import z from "zod";
 
 export const tweetShema = z.object({
   id: z.string().uuid(),
-  createdAt: z.string().datetime({ offset: true }),
+  createdAt: z.string(),
   text: z.string(),
   user: z.object({
     id: z.string().uuid(),
