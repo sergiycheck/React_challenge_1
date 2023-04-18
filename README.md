@@ -1,8 +1,5 @@
-# Serhii Kuzmych's assessment
-
 ## Application Overview
 
-The CodeScreen Tweets Analysis Service is a `React` application that allows users to display certain statistics about the tweets posted by a given user name.
 
 It uses the following libraries / technologies - don't hesitate to refer to the docs if you need to:
 
@@ -97,22 +94,13 @@ All required styling is already in place, so there is no need to add or modify a
 The `package.json` file should only be modified to add any third-party dependencies required for your solution. None of the existing dependencies and versions should be changed. Note that other dependencies (that are not currently in `package.json`) are not required to implement a working solution. 
 
 ## Running
-Run `npm install` to install all dependencies, then run `npm start` to build and launch the React application locally. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
+1. `npm install`
+1. `npm start`
+
+Navigate to http://localhost:3000/
 
 ## Tests
-Run `npm run cy:test` to run the Cypress E2E test files. These should all pass if your solution has been implemented correctly.
+`npm run cy:test` 
 
-##
-
-This test should take no longer than 3 hours to complete successfully.
-
-Good luck!
-## License
-
-At CodeScreen, we strongly value the integrity and privacy of our assessments. As a result, this repository is under exclusive copyright, which means you **do not** have permission to share your solution to this test publicly (i.e., inside a public GitHub/GitLab repo, on Reddit, etc.). <br>
-
-## Submitting your solution
-
-Please push your changes to the `main branch` of this repository. You can push one or more commits. <br>
-
-Once you are finished with the task, please click the `Submit Solution` link on <a href="https://app.codescreen.com/candidate/5db0842a-bfd0-48bc-856b-c58cb61f04cc" target="_blank">this screen</a>.
+## Time
+3 hours.
